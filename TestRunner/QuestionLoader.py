@@ -1,0 +1,20 @@
+import os
+from typing import Dict
+
+from TestRunner.QuestionReader import JsonQuestionReader
+
+
+class QuestionLoader:
+    file_readers: Dict
+    def __init__(self):
+        self.file_readers = {
+            ".json": JsonQuestionReader()
+        }
+    def load(self, file_path: str) -> Dict:
+        _, extension = os.path.splitext(file_path)
+        if extension in self.file_readers.keys():
+            file_reader = self.file_readers.get(extension)
+            return file_reader.read_question(file_path)
+        else:
+            raise ValueError(f"{extension} is not supported")
+
