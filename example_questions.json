@@ -1,12 +1,16 @@
 {
-  "data": [
-    {"question 1" :  [
-      "answer 1",
-      "answer 2"
-    ]},
-    {"question 2": [
-      "answer 1",
-      "answer 2"
-    ]}
+  "questions": [
+    {
+      "id": 1,
+      "title": "question 1",
+      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "correct_answer": "answer 2"
+    },
+    {
+      "id": 2,
+      "title": "question 2",
+      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "correct_answer": "answer 4"
+    }
   ]
 }
