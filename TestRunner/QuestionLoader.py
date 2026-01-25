@@ -1,6 +1,6 @@
 import os
-from typing import Dict
-
+from typing import Dict, List
+from Question import Question
 from TestRunner.QuestionReader import JsonQuestionReader
 
 
@@ -10,7 +10,7 @@ class QuestionLoader:
         self.file_readers = {
             ".json": JsonQuestionReader()
         }
-    def load(self, file_path: str) -> Dict:
+    def load(self, file_path: str) -> List[Question]:
         _, extension = os.path.splitext(file_path)
         if extension in self.file_readers.keys():
             file_reader = self.file_readers.get(extension)
