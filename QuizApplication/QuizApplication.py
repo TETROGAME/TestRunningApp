@@ -11,6 +11,7 @@ class QuizApplication:
         self.current_index = 0
 
         self.test_runner = test_runner
+        self.user_choices = []
 
         self.root = root
         root.title('Программа тестирования "placeholder"')
@@ -20,21 +21,29 @@ class QuizApplication:
     def __build_ui(self):
         self.font = Font(
             family='Arial',
-            size=20
+            size=13
         )
         self.title_label = tk.Label(self.root, text="Текст вопроса", font=self.font)
-        self.title_label.pack(pady=20)
+        self.title_label.pack(pady=5, padx=5)
         self.options_frame = tk.Frame(self.root)
-        self.options_frame.pack(pady=20)
+        self.options_frame.pack(pady=5, padx=5)
         self.next_button = tk.Button(self.root, text="Следующий вопрос", font=self.font, command=self.__next_question)
-        self.next_button.pack(pady=20)
+        self.next_button.pack(pady=5, padx=5)
         pass
 
     def __display_questions(self):
         for widget in self.options_frame.winfo_children():
             widget.destroy()
 
-        # current_question = self.test_runner.question_database[self.current_index]
+        current_question = self.test_runner.question_database[self.current_index]
+        self.title_label.config(text=current_question.title)
+
+        self.user_choices = []
+        for index, option in enumerate(current_question.options):
+            var = tk.IntVar()
+            tk.Checkbutton(self.options_frame, text=option, variable=var).pack(anchor='w')
+            self.user_choices.append(var)
+
 
     def __next_question(self):
         pass
