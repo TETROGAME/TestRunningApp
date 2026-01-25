@@ -3,14 +3,14 @@
     {
       "id": 1,
       "title": "question 1",
-      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "correct_answer": "answer 2"
+      "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "correct_answer_id": [1, 2]
     },
     {
       "id": 2,
       "title": "question 2",
-      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "correct_answer": "answer 4"
+      "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "correct_answer_id": [4, 1]
     }
   ]
 }
