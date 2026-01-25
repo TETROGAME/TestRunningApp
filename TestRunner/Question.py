@@ -7,4 +7,4 @@ class Question:
     id: int
     title: str
     options: List[str]
-    correct_answer_id: List[int]
+    correct_answer_ids: List[int]
