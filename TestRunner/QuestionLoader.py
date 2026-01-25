@@ -1,6 +1,6 @@
 import os
 from typing import Dict, List
-from Question import Question
+from TestRunner.Question import Question
 from TestRunner.QuestionReader import JsonQuestionReader
 
 

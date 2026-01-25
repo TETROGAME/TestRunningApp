@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import json
 from typing import List
-from Question import Question
+from TestRunner.Question import Question
 
 class QuestionReader(ABC):
     @abstractmethod

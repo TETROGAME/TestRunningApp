@@ -1,5 +1,5 @@
 from typing import List
-from Question import Question
+from TestRunner.Question import Question
 from TestRunner.QuestionLoader import QuestionLoader
 
 
