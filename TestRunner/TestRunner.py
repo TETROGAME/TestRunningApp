@@ -13,5 +13,9 @@ class TestRunner:
         except ValueError as e:
             print(e)
 
-    def validate_answer(self, question: Question, user_answer_indices: List[int]) -> bool:
-        target = self.question_database.index(question)
+    def validate_answer(self, question_id: int, user_answer_ids: List[int]) -> bool:
+        target = self.question_database[question_id]
+        if target.correct_answer_ids == user_answer_ids:
+            return True
+        else:
+            return False
