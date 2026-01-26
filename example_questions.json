@@ -1,16 +1,16 @@
 {
   "questions": [
     {
-      "id": 1,
+      "id": 0,
       "title": "question 1",
       "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "correct_answer_id": [1, 2]
+      "correct_answer_id": [0, 1]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "question 2",
       "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "correct_answer_id": [4, 1]
+      "correct_answer_id": [0, 3]
     }
   ]
 }
