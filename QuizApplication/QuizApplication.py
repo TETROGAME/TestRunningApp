@@ -45,5 +45,21 @@ class QuizApplication:
             self.user_choices.append(var)
 
 
-    def __next_question(self):
-        pass
+    def __next_question(self) -> None:
+        question = self.test_runner.question_database[self.current_index]
+        selected_ids = [idx for idx, var in enumerate(self.user_choices) if var.get() == 1]
+        self.test_runner.submit_answer(question.id, selected_ids)
+
+        self.current_index += 1
+        if self.current_index < len(self.test_runner.question_database):
+            self.__display_questions()
+        else:
+            self.__finish_test()
+
+
+    def __finish_test(self) -> None:
+        tk.messagebox.showinfo(
+            title="Результат",
+            message=f"Результат: {self.test_runner.count_score()}/{len(self.test_runner.question_database)}\n"
+        )
+        self.root.destroy()
