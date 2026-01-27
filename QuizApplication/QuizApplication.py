@@ -8,7 +8,7 @@ from TestRunner.TestRunner import TestRunner
 class QuizApplication:
     test_runner: TestRunner
     def __init__(self, root: tk.Tk, test_runner: TestRunner) -> None:
-        self.current_index = 0
+        self.current_index = 1
 
         self.test_runner = test_runner
         self.user_choices: list[tk.IntVar] = []

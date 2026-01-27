@@ -1,7 +1,7 @@
 {
   "questions": [
     {
-      "id": 0,
+      "id": 1,
       "title": "What is the main difference between a list and a tuple in Python?",
       "options": [
         { "id": "a", "text": "Lists are mutable" },
@@ -12,7 +12,7 @@
       "correct_option_ids": ["a"]
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "What does the 'is' operator compare?",
       "options": [
         { "id": "a", "text": "Value equality" },
@@ -23,7 +23,7 @@
       "correct_option_ids": ["b"]
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "Which keyword is used to create a generator in Python?",
       "options": [
         { "id": "a", "text": "return" },
@@ -34,7 +34,7 @@
       "correct_option_ids": ["b"]
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "What is the purpose of Python's GIL (Global Interpreter Lock)?",
       "options": [
         { "id": "a", "text": "To speed up multiprocessing" },
@@ -45,7 +45,7 @@
       "correct_option_ids": ["c"]
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "Which method is called when an object is created?",
       "options": [
         { "id": "a", "text": "__new__" },
@@ -56,7 +56,7 @@
       "correct_option_ids": ["b"]
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "What does the 'with' statement use internally?",
       "options": [
         { "id": "a", "text": "__enter__ and __exit__" },
@@ -67,7 +67,7 @@
       "correct_option_ids": ["a"]
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "Which of the following is NOT a mutable type?",
       "options": [
         { "id": "a", "text": "List" },
@@ -78,7 +78,7 @@
       "correct_option_ids": ["d"]
     },
     {
-      "id": 7,
+      "id": 8,
       "title": "What does the 'async' keyword define?",
       "options": [
         { "id": "a", "text": "A coroutine" },
@@ -89,7 +89,7 @@
       "correct_option_ids": ["a"]
     },
     {
-      "id": 8,
+      "id": 9,
       "title": "Which function is used to iterate over an iterable with an index?",
       "options": [
         { "id": "a", "text": "range()" },
@@ -100,7 +100,7 @@
       "correct_option_ids": ["b"]
     },
     {
-      "id": 9,
+      "id": 10,
       "title": "What is a shallow copy?",
       "options": [
         { "id": "a", "text": "A full recursive copy" },
@@ -109,116 +109,6 @@
         { "id": "d", "text": "A copy stored in temporary memory" }
       ],
       "correct_option_ids": ["c"]
-    },
-    {
-      "id": 10,
-      "title": "Which decorator turns a method into a class method?",
-      "options": [
-        { "id": "a", "text": "@staticmethod" },
-        { "id": "b", "text": "@classmethod" },
-        { "id": "c", "text": "@property" },
-        { "id": "d", "text": "@class" }
-      ],
-      "correct_option_ids": ["b"]
-    },
-    {
-      "id": 11,
-      "title": "What does the 'pass' statement do?",
-      "options": [
-        { "id": "a", "text": "Skips execution" },
-        { "id": "b", "text": "Raises an error" },
-        { "id": "c", "text": "Ends a loop" },
-        { "id": "d", "text": "Does nothing" }
-      ],
-      "correct_option_ids": ["d"]
-    },
-    {
-      "id": 12,
-      "title": "Which module is used for regular expressions in Python?",
-      "options": [
-        { "id": "a", "text": "regex" },
-        { "id": "b", "text": "re" },
-        { "id": "c", "text": "pattern" },
-        { "id": "d", "text": "match" }
-      ],
-      "correct_option_ids": ["b"]
-    },
-    {
-      "id": 13,
-      "title": "What is the output type of the map() function in Python 3?",
-      "options": [
-        { "id": "a", "text": "List" },
-        { "id": "b", "text": "Tuple" },
-        { "id": "c", "text": "Iterator" },
-        { "id": "d", "text": "Dictionary" }
-      ],
-      "correct_option_ids": ["c"]
-    },
-    {
-      "id": 14,
-      "title": "Which method is used to get the length of an object?",
-      "options": [
-        { "id": "a", "text": "__size__" },
-        { "id": "b", "text": "__count__" },
-        { "id": "c", "text": "__len__" },
-        { "id": "d", "text": "length()" }
-      ],
-      "correct_option_ids": ["c"]
-    },
-    {
-      "id": 15,
-      "title": "What is the purpose of virtual environments?",
-      "options": [
-        { "id": "a", "text": "To speed up Python" },
-        { "id": "b", "text": "To isolate project dependencies" },
-        { "id": "c", "text": "To manage memory" },
-        { "id": "d", "text": "To compile Python code" }
-      ],
-      "correct_option_ids": ["b"]
-    },
-    {
-      "id": 16,
-      "title": "Which built‑in function converts an iterable into a list?",
-      "options": [
-        { "id": "a", "text": "iter()" },
-        { "id": "b", "text": "list()" },
-        { "id": "c", "text": "tuple()" },
-        { "id": "d", "text": "array()" }
-      ],
-      "correct_option_ids": ["b"]
-    },
-    {
-      "id": 17,
-      "title": "What does the 'zip()' function do?",
-      "options": [
-        { "id": "a", "text": "Combines iterables element-wise" },
-        { "id": "b", "text": "Sorts two lists" },
-        { "id": "c", "text": "Creates a dictionary" },
-        { "id": "d", "text": "Compresses data" }
-      ],
-      "correct_option_ids": ["a"]
-    },
-    {
-      "id": 18,
-      "title": "Which statement is true about Python dictionaries?",
-      "options": [
-        { "id": "a", "text": "They preserve insertion order" },
-        { "id": "b", "text": "Keys can be lists" },
-        { "id": "c", "text": "Values must be unique" },
-        { "id": "d", "text": "They cannot be nested" }
-      ],
-      "correct_option_ids": ["a"]
-    },
-    {
-      "id": 19,
-      "title": "What is the correct way to handle exceptions?",
-      "options": [
-        { "id": "a", "text": "try/catch" },
-        { "id": "b", "text": "try/except" },
-        { "id": "c", "text": "catch/except" },
-        { "id": "d", "text": "error/except" }
-      ],
-      "correct_option_ids": ["b"]
     }
   ]
 }
