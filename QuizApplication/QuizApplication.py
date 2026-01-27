@@ -53,14 +53,24 @@ class QuizApplication:
         if self.current_index < len(self.test_runner.question_database):
             self.__display_questions()
         else:
-            self.__finish_test()
+            self.__show_score()
 
 
-    def __finish_test(self) -> None:
+    def __show_score(self) -> None:
         score = self.test_runner.count_score()
         number_of_questions = len(self.test_runner.question_database)
         tk.messagebox.showinfo(
             title="Результат",
             message=f"Результат: {score}/{number_of_questions}\n"
         )
+        option = tk.messagebox.askyesno(
+            title="Просмотр результатов",
+            message="Посмотреть ошибки?"
+        )
+        if option:
+            self.__show_mistakes()
         self.root.destroy()
+
+    def __show_mistakes(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
