@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 import json
 from typing import List
-from TestRunner.Question import Question
+from TestRunner.Question import Question, Option
+
 
 class QuestionReader(ABC):
     @abstractmethod
@@ -13,10 +14,12 @@ class JsonQuestionReader(QuestionReader):
         file = open(file_path, 'r')
         data = json.load(file)
         result = list()
+
         for question in data['questions']:
+            options = [Option(id=option['id'], text=option['text']) for option in question['options']]
             result.append(Question(
-                question['id'],
-                question['title'],
-                question['options'],
-                question['correct_answer_id']))
+                id=question['id'],
+                title=question['title'],
+                options=options,
+                correct_option_ids=question['correct_option_ids']))
         return result

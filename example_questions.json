@@ -3,122 +3,222 @@
     {
       "id": 0,
       "title": "What is the main difference between a list and a tuple in Python?",
-      "options": ["Lists are mutable", "Tuples are mutable", "Lists are immutable", "Tuples cannot store mixed data types"],
-      "correct_answer_id": [0]
+      "options": [
+        { "id": "a", "text": "Lists are mutable" },
+        { "id": "b", "text": "Tuples are mutable" },
+        { "id": "c", "text": "Lists are immutable" },
+        { "id": "d", "text": "Tuples cannot store mixed data types" }
+      ],
+      "correct_option_ids": ["a"]
     },
     {
       "id": 1,
       "title": "What does the 'is' operator compare?",
-      "options": ["Value equality", "Object identity", "Type equality", "Memory size"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "Value equality" },
+        { "id": "b", "text": "Object identity" },
+        { "id": "c", "text": "Type equality" },
+        { "id": "d", "text": "Memory size" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 2,
       "title": "Which keyword is used to create a generator in Python?",
-      "options": ["return", "yield", "generate", "async"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "return" },
+        { "id": "b", "text": "yield" },
+        { "id": "c", "text": "generate" },
+        { "id": "d", "text": "async" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 3,
       "title": "What is the purpose of Python's GIL (Global Interpreter Lock)?",
-      "options": ["To speed up multiprocessing", "To allow multiple threads to run simultaneously", "To ensure only one thread executes Python bytecode at a time", "To manage memory allocation"],
-      "correct_answer_id": [2]
+      "options": [
+        { "id": "a", "text": "To speed up multiprocessing" },
+        { "id": "b", "text": "To allow multiple threads to run simultaneously" },
+        { "id": "c", "text": "To ensure only one thread executes Python bytecode at a time" },
+        { "id": "d", "text": "To manage memory allocation" }
+      ],
+      "correct_option_ids": ["c"]
     },
     {
       "id": 4,
       "title": "Which method is called when an object is created?",
-      "options": ["__new__", "__init__", "__create__", "__start__"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "__new__" },
+        { "id": "b", "text": "__init__" },
+        { "id": "c", "text": "__create__" },
+        { "id": "d", "text": "__start__" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 5,
       "title": "What does the 'with' statement use internally?",
-      "options": ["__enter__ and __exit__", "__open__ and __close__", "__start__ and __end__", "__begin__ and __finish__"],
-      "correct_answer_id": [0]
+      "options": [
+        { "id": "a", "text": "__enter__ and __exit__" },
+        { "id": "b", "text": "__open__ and __close__" },
+        { "id": "c", "text": "__start__ and __end__" },
+        { "id": "d", "text": "__begin__ and __finish__" }
+      ],
+      "correct_option_ids": ["a"]
     },
     {
       "id": 6,
       "title": "Which of the following is NOT a mutable type?",
-      "options": ["List", "Dictionary", "Set", "Tuple"],
-      "correct_answer_id": [3]
+      "options": [
+        { "id": "a", "text": "List" },
+        { "id": "b", "text": "Dictionary" },
+        { "id": "c", "text": "Set" },
+        { "id": "d", "text": "Tuple" }
+      ],
+      "correct_option_ids": ["d"]
     },
     {
       "id": 7,
       "title": "What does the 'async' keyword define?",
-      "options": ["A coroutine", "A thread", "A generator", "A context manager"],
-      "correct_answer_id": [0]
+      "options": [
+        { "id": "a", "text": "A coroutine" },
+        { "id": "b", "text": "A thread" },
+        { "id": "c", "text": "A generator" },
+        { "id": "d", "text": "A context manager" }
+      ],
+      "correct_option_ids": ["a"]
     },
     {
       "id": 8,
       "title": "Which function is used to iterate over an iterable with an index?",
-      "options": ["range()", "enumerate()", "zip()", "iter()"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "range()" },
+        { "id": "b", "text": "enumerate()" },
+        { "id": "c", "text": "zip()" },
+        { "id": "d", "text": "iter()" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 9,
       "title": "What is a shallow copy?",
-      "options": ["A full recursive copy", "A reference to the original object", "A copy where nested objects are shared", "A copy stored in temporary memory"],
-      "correct_answer_id": [2]
+      "options": [
+        { "id": "a", "text": "A full recursive copy" },
+        { "id": "b", "text": "A reference to the original object" },
+        { "id": "c", "text": "A copy where nested objects are shared" },
+        { "id": "d", "text": "A copy stored in temporary memory" }
+      ],
+      "correct_option_ids": ["c"]
     },
     {
       "id": 10,
       "title": "Which decorator turns a method into a class method?",
-      "options": ["@staticmethod", "@classmethod", "@property", "@class"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "@staticmethod" },
+        { "id": "b", "text": "@classmethod" },
+        { "id": "c", "text": "@property" },
+        { "id": "d", "text": "@class" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 11,
       "title": "What does the 'pass' statement do?",
-      "options": ["Skips execution", "Raises an error", "Ends a loop", "Does nothing"],
-      "correct_answer_id": [3]
+      "options": [
+        { "id": "a", "text": "Skips execution" },
+        { "id": "b", "text": "Raises an error" },
+        { "id": "c", "text": "Ends a loop" },
+        { "id": "d", "text": "Does nothing" }
+      ],
+      "correct_option_ids": ["d"]
     },
     {
       "id": 12,
       "title": "Which module is used for regular expressions in Python?",
-      "options": ["regex", "re", "pattern", "match"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "regex" },
+        { "id": "b", "text": "re" },
+        { "id": "c", "text": "pattern" },
+        { "id": "d", "text": "match" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 13,
       "title": "What is the output type of the map() function in Python 3?",
-      "options": ["List", "Tuple", "Iterator", "Dictionary"],
-      "correct_answer_id": [2]
+      "options": [
+        { "id": "a", "text": "List" },
+        { "id": "b", "text": "Tuple" },
+        { "id": "c", "text": "Iterator" },
+        { "id": "d", "text": "Dictionary" }
+      ],
+      "correct_option_ids": ["c"]
     },
     {
       "id": 14,
       "title": "Which method is used to get the length of an object?",
-      "options": ["__size__", "__count__", "__len__", "length()"],
-      "correct_answer_id": [2]
+      "options": [
+        { "id": "a", "text": "__size__" },
+        { "id": "b", "text": "__count__" },
+        { "id": "c", "text": "__len__" },
+        { "id": "d", "text": "length()" }
+      ],
+      "correct_option_ids": ["c"]
     },
     {
       "id": 15,
       "title": "What is the purpose of virtual environments?",
-      "options": ["To speed up Python", "To isolate project dependencies", "To manage memory", "To compile Python code"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "To speed up Python" },
+        { "id": "b", "text": "To isolate project dependencies" },
+        { "id": "c", "text": "To manage memory" },
+        { "id": "d", "text": "To compile Python code" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 16,
       "title": "Which built‑in function converts an iterable into a list?",
-      "options": ["iter()", "list()", "tuple()", "array()"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "iter()" },
+        { "id": "b", "text": "list()" },
+        { "id": "c", "text": "tuple()" },
+        { "id": "d", "text": "array()" }
+      ],
+      "correct_option_ids": ["b"]
     },
     {
       "id": 17,
       "title": "What does the 'zip()' function do?",
-      "options": ["Combines iterables element-wise", "Sorts two lists", "Creates a dictionary", "Compresses data"],
-      "correct_answer_id": [0]
+      "options": [
+        { "id": "a", "text": "Combines iterables element-wise" },
+        { "id": "b", "text": "Sorts two lists" },
+        { "id": "c", "text": "Creates a dictionary" },
+        { "id": "d", "text": "Compresses data" }
+      ],
+      "correct_option_ids": ["a"]
     },
     {
       "id": 18,
       "title": "Which statement is true about Python dictionaries?",
-      "options": ["They preserve insertion order", "Keys can be lists", "Values must be unique", "They cannot be nested"],
-      "correct_answer_id": [0]
+      "options": [
+        { "id": "a", "text": "They preserve insertion order" },
+        { "id": "b", "text": "Keys can be lists" },
+        { "id": "c", "text": "Values must be unique" },
+        { "id": "d", "text": "They cannot be nested" }
+      ],
+      "correct_option_ids": ["a"]
     },
     {
       "id": 19,
       "title": "What is the correct way to handle exceptions?",
-      "options": ["try/catch", "try/except", "catch/except", "error/except"],
-      "correct_answer_id": [1]
+      "options": [
+        { "id": "a", "text": "try/catch" },
+        { "id": "b", "text": "try/except" },
+        { "id": "c", "text": "catch/except" },
+        { "id": "d", "text": "error/except" }
+      ],
+      "correct_option_ids": ["b"]
     }
   ]
 }

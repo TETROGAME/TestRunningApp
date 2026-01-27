@@ -11,7 +11,8 @@ class QuizApplication:
         self.current_index = 0
 
         self.test_runner = test_runner
-        self.user_choices = []
+        self.user_choices: list[tk.IntVar] = []
+        self.current_option_ids: list[str] = []
 
         self.root = root
         root.title('Программа тестирования "placeholder"')
@@ -40,14 +41,19 @@ class QuizApplication:
         self.user_choices = []
         for index, option in enumerate(current_question.options):
             var = tk.IntVar()
-            tk.Checkbutton(self.options_frame, text=option, font=self.font, variable=var).pack(anchor='w')
+            tk.Checkbutton(self.options_frame, text=option.text, font=self.font, variable=var).pack(anchor='w')
             self.user_choices.append(var)
+            self.current_option_ids.append(option.id)
 
 
     def __next_question(self) -> None:
         question = self.test_runner.question_database[self.current_index]
-        selected_ids = [idx for idx, var in enumerate(self.user_choices) if var.get() == 1]
-        self.test_runner.submit_answer(question.id, selected_ids)
+        selected_option_ids = [
+            opt_id
+            for opt_id, var in zip(self.current_option_ids, self.user_choices)
+            if var.get() == 1
+        ]
+        self.test_runner.submit_answer(question.id, selected_option_ids)
 
         self.current_index += 1
         if self.current_index < len(self.test_runner.question_database):
