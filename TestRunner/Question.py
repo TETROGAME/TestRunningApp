@@ -1,14 +1,13 @@
 from dataclasses import dataclass
-from typing import List, Set
+from typing import List
 
-@dataclass
+@dataclass(frozen=True, slots=True)
 class Option:
     id: str
     text: str
 
-@dataclass
+@dataclass(frozen=True, slots=True)
 class Question:
-    id: int
     title: str
     options: List[Option]
     correct_option_ids: List[str]

@@ -53,7 +53,7 @@ class QuizApplication:
             for opt_id, var in zip(self.current_option_ids, self.user_choices)
             if var.get() == 1
         ]
-        self.test_runner.submit_answer(question.id, selected_option_ids)
+        self.test_runner.submit_answer(self.current_index, selected_option_ids)
 
         self.current_index += 1
         if self.current_index < len(self.test_runner.question_database):
