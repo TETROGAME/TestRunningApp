@@ -6,7 +6,7 @@ from TestRunner.QuestionReader import JsonQuestionReader
 
 class QuestionLoader:
     file_readers: Dict
-    def __init__(self):
+    def __init__(self) -> None:
         self.file_readers = {
             ".json": JsonQuestionReader()
         }

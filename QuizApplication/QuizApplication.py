@@ -18,7 +18,7 @@ class QuizApplication:
         self.__build_ui()
         self.__display_questions()
 
-    def __build_ui(self):
+    def __build_ui(self) -> None:
         self.font = Font(
             family='Arial',
             size=13
@@ -29,9 +29,8 @@ class QuizApplication:
         self.options_frame.pack(pady=5, padx=5)
         self.next_button = tk.Button(self.root, text="Следующий вопрос", font=self.font, command=self.__next_question)
         self.next_button.pack(pady=5, padx=5)
-        pass
 
-    def __display_questions(self):
+    def __display_questions(self) -> None:
         for widget in self.options_frame.winfo_children():
             widget.destroy()
 

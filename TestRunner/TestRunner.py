@@ -7,7 +7,7 @@ class TestRunner:
     question_database: List[Question]
     user_answer_ids = {}
 
-    def __init__(self, file_path: str):
+    def __init__(self, file_path: str) -> None:
         loader = QuestionLoader()
         try:
             self.question_database = loader.load(file_path)
@@ -21,7 +21,7 @@ class TestRunner:
         else:
             return False
 
-    def submit_answer(self, question_id: int, user_answer_ids: List[int]):
+    def submit_answer(self, question_id: int, user_answer_ids: List[int]) -> None:
         self.user_answer_ids[question_id] = user_answer_ids
 
     def count_score(self) -> int:
