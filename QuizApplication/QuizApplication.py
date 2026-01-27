@@ -40,7 +40,7 @@ class QuizApplication:
         self.user_choices = []
         for index, option in enumerate(current_question.options):
             var = tk.IntVar()
-            tk.Checkbutton(self.options_frame, text=option, variable=var).pack(anchor='w')
+            tk.Checkbutton(self.options_frame, text=option, font=self.font, variable=var).pack(anchor='w')
             self.user_choices.append(var)
 
 
