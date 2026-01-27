@@ -58,8 +58,10 @@ class QuizApplication:
 
 
     def __finish_test(self) -> None:
+        score = self.test_runner.count_score()
+        number_of_questions = len(self.test_runner.question_database)
         tk.messagebox.showinfo(
             title="Результат",
-            message=f"Результат: {self.test_runner.count_score()}/{len(self.test_runner.question_database)}\n"
+            message=f"Результат: {score}/{number_of_questions}\n"
         )
         self.root.destroy()
