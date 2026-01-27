@@ -2,15 +2,123 @@
   "questions": [
     {
       "id": 0,
-      "title": "question 1",
-      "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "correct_answer_id": [0, 1]
+      "title": "What is the main difference between a list and a tuple in Python?",
+      "options": ["Lists are mutable", "Tuples are mutable", "Lists are immutable", "Tuples cannot store mixed data types"],
+      "correct_answer_id": [0]
     },
     {
       "id": 1,
-      "title": "question 2",
-      "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "correct_answer_id": [0, 3]
+      "title": "What does the 'is' operator compare?",
+      "options": ["Value equality", "Object identity", "Type equality", "Memory size"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 2,
+      "title": "Which keyword is used to create a generator in Python?",
+      "options": ["return", "yield", "generate", "async"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 3,
+      "title": "What is the purpose of Python's GIL (Global Interpreter Lock)?",
+      "options": ["To speed up multiprocessing", "To allow multiple threads to run simultaneously", "To ensure only one thread executes Python bytecode at a time", "To manage memory allocation"],
+      "correct_answer_id": [2]
+    },
+    {
+      "id": 4,
+      "title": "Which method is called when an object is created?",
+      "options": ["__new__", "__init__", "__create__", "__start__"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 5,
+      "title": "What does the 'with' statement use internally?",
+      "options": ["__enter__ and __exit__", "__open__ and __close__", "__start__ and __end__", "__begin__ and __finish__"],
+      "correct_answer_id": [0]
+    },
+    {
+      "id": 6,
+      "title": "Which of the following is NOT a mutable type?",
+      "options": ["List", "Dictionary", "Set", "Tuple"],
+      "correct_answer_id": [3]
+    },
+    {
+      "id": 7,
+      "title": "What does the 'async' keyword define?",
+      "options": ["A coroutine", "A thread", "A generator", "A context manager"],
+      "correct_answer_id": [0]
+    },
+    {
+      "id": 8,
+      "title": "Which function is used to iterate over an iterable with an index?",
+      "options": ["range()", "enumerate()", "zip()", "iter()"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 9,
+      "title": "What is a shallow copy?",
+      "options": ["A full recursive copy", "A reference to the original object", "A copy where nested objects are shared", "A copy stored in temporary memory"],
+      "correct_answer_id": [2]
+    },
+    {
+      "id": 10,
+      "title": "Which decorator turns a method into a class method?",
+      "options": ["@staticmethod", "@classmethod", "@property", "@class"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 11,
+      "title": "What does the 'pass' statement do?",
+      "options": ["Skips execution", "Raises an error", "Ends a loop", "Does nothing"],
+      "correct_answer_id": [3]
+    },
+    {
+      "id": 12,
+      "title": "Which module is used for regular expressions in Python?",
+      "options": ["regex", "re", "pattern", "match"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 13,
+      "title": "What is the output type of the map() function in Python 3?",
+      "options": ["List", "Tuple", "Iterator", "Dictionary"],
+      "correct_answer_id": [2]
+    },
+    {
+      "id": 14,
+      "title": "Which method is used to get the length of an object?",
+      "options": ["__size__", "__count__", "__len__", "length()"],
+      "correct_answer_id": [2]
+    },
+    {
+      "id": 15,
+      "title": "What is the purpose of virtual environments?",
+      "options": ["To speed up Python", "To isolate project dependencies", "To manage memory", "To compile Python code"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 16,
+      "title": "Which built‑in function converts an iterable into a list?",
+      "options": ["iter()", "list()", "tuple()", "array()"],
+      "correct_answer_id": [1]
+    },
+    {
+      "id": 17,
+      "title": "What does the 'zip()' function do?",
+      "options": ["Combines iterables element-wise", "Sorts two lists", "Creates a dictionary", "Compresses data"],
+      "correct_answer_id": [0]
+    },
+    {
+      "id": 18,
+      "title": "Which statement is true about Python dictionaries?",
+      "options": ["They preserve insertion order", "Keys can be lists", "Values must be unique", "They cannot be nested"],
+      "correct_answer_id": [0]
+    },
+    {
+      "id": 19,
+      "title": "What is the correct way to handle exceptions?",
+      "options": ["try/catch", "try/except", "catch/except", "error/except"],
+      "correct_answer_id": [1]
     }
   ]
 }
