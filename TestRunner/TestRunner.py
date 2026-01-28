@@ -8,16 +8,16 @@ class TestRunner:
         loader = QuestionLoader()
         self.question_database: Dict[int, Question] = loader.load(file_path)
         self.question_order: List[int] = list(self.question_database.keys())
-        self.user_answer_ids: Dict[int, List[str]] = {}
+        self.user_answers: Dict[int, List[str]] = {}
 
     def validate_answer(self, question_id: int) -> bool:
         question = self.question_database[question_id]
-        selected = set(self.user_answer_ids.get(question_id, []))
+        selected = set(self.user_answers.get(question_id, []))
         correct = set(question.correct_option_ids)
         return selected == correct
 
-    def submit_answer(self, question_id: int, selected_option_ids: List[str]) -> None:
-        self.user_answer_ids[question_id] = selected_option_ids
+    def submit_all(self, user_answers: Dict[int, List[str]]) -> None:
+        self.user_answers = user_answers
 
     def count_score(self) -> int:
         score = 0

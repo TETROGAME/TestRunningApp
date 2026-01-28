@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkinter.font import Font
+from tkinter import ttk
+from typing import Dict, List
 
 from TestRunner.Question import Option
 from TestRunner.TestRunner import TestRunner
@@ -9,59 +11,61 @@ from TestRunner.TestRunner import TestRunner
 class QuizApplication:
     test_runner: TestRunner
     def __init__(self, root: tk.Tk, test_runner: TestRunner) -> None:
-        self.current_index = 1
 
         self.test_runner = test_runner
-        self.user_choices: list[tk.IntVar] = []
-        self.current_option_ids: list[str] = []
 
         self.root = root
-        root.title('Программа тестирования "placeholder"')
-        self.__build_ui()
-        self.__display_questions()
+        root.title('Программа тестирования')
 
-    def __build_ui(self) -> None:
         self.font = Font(
             family='Arial',
             size=13
         )
-        self.title_label = tk.Label(self.root, text="Текст вопроса", font=self.font)
-        self.title_label.pack(pady=5, padx=5)
-        self.options_frame = tk.Frame(self.root)
-        self.options_frame.pack(pady=5, padx=5)
-        self.next_button = tk.Button(self.root, text="Следующий вопрос", font=self.font, command=self.__next_question)
-        self.next_button.pack(pady=5, padx=5)
+        self.__build_ui()
 
-    def __display_questions(self) -> None:
-        for widget in self.options_frame.winfo_children():
-            widget.destroy()
+    def __build_ui(self) -> None:
+        self.question_notebook = ttk.Notebook(self.root)
+        self.question_notebook.pack(expand=True, fill='both')
 
-        current_question = self.test_runner.question_database[self.current_index]
-        self.title_label.config(text=current_question.title)
+        self.__load_question_tabs()
 
-        self.user_choices = []
-        for index, option in enumerate(current_question.options):
-            var = tk.IntVar()
-            tk.Checkbutton(self.options_frame, text=option.text, font=self.font, variable=var).pack(anchor='w')
-            self.user_choices.append(var)
-            self.current_option_ids.append(option.id)
+        self.submit_answers_button = tk.Button(self.root, text="Завершить тест", font=self.font, command=self.__proceed_after_questions)
+        self.submit_answers_button.pack(fill="both", pady=5, padx=5)
 
+    def __load_question_tabs(self):
+        self.options_vars: Dict[int, List[tk.StringVar]] = dict()
+        for question_id in self.test_runner.question_database.keys():
+            current_question = self.test_runner.question_database[question_id]
 
-    def __next_question(self) -> None:
-        selected_option_ids = [
-            opt_id
-            for opt_id, var in zip(self.current_option_ids, self.user_choices)
-            if var.get() == 1
-        ]
-        self.test_runner.submit_answer(self.current_index, selected_option_ids)
+            question_frame = tk.Frame()
+            question_frame.pack()
 
-        self.current_index += 1
-        if self.current_index <= len(self.test_runner.question_database):
-            self.__display_questions()
-        else:
-            self.__show_score()
+            question_title = tk.Label(question_frame, text=current_question.title, font=self.font)
+            question_title.pack()
 
+            options_frame = tk.Frame(question_frame)
+            options_frame.pack()
 
+            current_question_vars = []
+            for option in current_question.options:
+                var = tk.StringVar(value="not_selected")
+                option_checkbox = tk.Checkbutton(
+                    options_frame,
+                    variable=var,
+                    onvalue=option.id,
+                    offvalue="not_selected",
+                    text=option.text,
+                    font=self.font)
+                option_checkbox.pack()
+                current_question_vars.append(var)
+            self.question_notebook.add(question_frame, text=f"{question_id}")
+            self.options_vars[question_id] = current_question_vars
+
+    def __submit_all_user_answers(self):
+        user_answers: Dict[int, List[str]] = dict()
+        for key in self.options_vars.keys():
+            user_answers[key] = list(var.get() for var in self.options_vars[key] if var.get() != "not_selected")
+        self.test_runner.submit_all(user_answers)
     def __show_score(self) -> None:
         score = self.test_runner.count_score()
         number_of_questions = len(self.test_runner.question_database)
@@ -76,8 +80,15 @@ class QuizApplication:
         if option:
             self.__show_mistakes()
 
+    def __proceed_after_questions(self):
+        self.__submit_all_user_answers()
+        self.__show_score()
+
+
+
     def __is_checked(self, question_id: int, option: Option) -> bool:
-        return option.id in self.test_runner.user_answer_ids[question_id]
+        return option.id in self.test_runner.user_answers[question_id]
+
     def __show_mistakes(self):
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -107,3 +118,6 @@ class QuizApplication:
                         font=self.font,
                         fg=highlight)
                     label.pack(pady=5, padx=5)
+
+
+
