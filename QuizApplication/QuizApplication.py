@@ -93,16 +93,16 @@ class QuizApplication:
         for widget in self.root.winfo_children():
             widget.destroy()
 
-        label_frame = tk.Frame(self.root)
-        label_frame.pack()
+        mistakes_window_notebook = ttk.Notebook(self.root)
+        mistakes_window_notebook.pack(expand=True, fill='both')
 
         qdb = self.test_runner.question_database
         for question_id in self.test_runner.question_database.keys():
             if not self.test_runner.validate_answer(question_id):
-                question_frame = tk.Frame(label_frame)
+                question_frame = tk.Frame()
                 question_frame.pack()
 
-                label = tk.Label(question_frame, text=f"{question_id}. {qdb[question_id].title}", font=self.font)
+                label = tk.Label(question_frame, text=qdb[question_id].title, font=self.font)
                 label.pack(pady=5, padx=5)
 
                 options_frame = tk.Frame(question_frame)
@@ -118,6 +118,7 @@ class QuizApplication:
                         font=self.font,
                         fg=highlight)
                     label.pack(pady=5, padx=5)
+                mistakes_window_notebook.add(question_frame, text=f"{question_id}")
 
 
 
