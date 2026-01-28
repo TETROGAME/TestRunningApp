@@ -73,6 +73,13 @@ class QuizApplication:
             title="Результат",
             message=f"Результат: {score}/{number_of_questions}\n"
         )
+        if score == number_of_questions:
+            tk.messagebox.showinfo(
+                title="Успех",
+                message="Тест сдан"
+            )
+            self.root.destroy()
+            return
         option = tk.messagebox.askyesno(
             title="Просмотр результатов",
             message="Посмотреть ошибки?"
