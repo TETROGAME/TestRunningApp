@@ -34,8 +34,8 @@ class QuizApplication:
 
     def __load_question_tabs(self):
         self.options_vars: Dict[int, List[tk.StringVar]] = dict()
-        for question_id in self.test_runner.question_database.keys():
-            current_question = self.test_runner.question_database[question_id]
+        for question_id in self.test_runner.current_session_question_database.keys():
+            current_question = self.test_runner.current_session_question_database[question_id]
 
             question_frame = tk.Frame()
             question_frame.pack()
@@ -68,7 +68,7 @@ class QuizApplication:
         self.test_runner.submit_all(user_answers)
     def __show_score(self) -> None:
         score = self.test_runner.count_score()
-        number_of_questions = len(self.test_runner.question_database)
+        number_of_questions = len(self.test_runner.current_session_question_database)
         tk.messagebox.showinfo(
             title="Результат",
             message=f"Результат: {score}/{number_of_questions}\n"
@@ -103,8 +103,8 @@ class QuizApplication:
         mistakes_window_notebook = ttk.Notebook(self.root)
         mistakes_window_notebook.pack(expand=True, fill='both')
 
-        qdb = self.test_runner.question_database
-        for question_id in self.test_runner.question_database.keys():
+        qdb = self.test_runner.current_session_question_database
+        for question_id in self.test_runner.current_session_question_database.keys():
             if not self.test_runner.validate_answer(question_id):
                 question_frame = tk.Frame()
                 question_frame.pack()
@@ -118,7 +118,7 @@ class QuizApplication:
                 for option in qdb[question_id].options:
                     highlight = "black"
                     if self.__is_checked(question_id, option):
-                        highlight = "green" if option.id in self.test_runner.question_database[question_id].correct_option_ids else "red"
+                        highlight = "green" if option.id in self.test_runner.current_session_question_database[question_id].correct_option_ids else "red"
                     label = tk.Label(
                         options_frame,
                         text=option.text,
