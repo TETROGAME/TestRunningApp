@@ -12,7 +12,7 @@ class QuestionReader(ABC):
 
 class JsonQuestionReader(QuestionReader):
     def read_question(self, file_path: str) -> Dict[int, Question]:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding="utf-8") as file:
             data = json.load(file)
 
         result: Dict[int, Question] = dict()
