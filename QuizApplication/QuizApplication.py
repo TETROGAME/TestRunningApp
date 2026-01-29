@@ -19,7 +19,7 @@ class QuizApplication:
 
         self.font = Font(
             family='Arial',
-            size=13
+            size=25
         )
         self.__build_ui()
 
