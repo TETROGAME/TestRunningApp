@@ -34,6 +34,7 @@ class QuizApplication:
 
     def __load_question_tabs(self):
         self.options_vars: Dict[int, List[tk.StringVar]] = dict()
+        question_counter = 1
         for question_id in self.test_runner.current_session_question_database.keys():
             current_question = self.test_runner.current_session_question_database[question_id]
 
@@ -47,6 +48,7 @@ class QuizApplication:
             options_frame.pack()
 
             current_question_vars = []
+
             for option in current_question.options:
                 var = tk.StringVar(value="not_selected")
                 option_checkbox = tk.Checkbutton(
@@ -58,8 +60,10 @@ class QuizApplication:
                     font=self.font)
                 option_checkbox.pack()
                 current_question_vars.append(var)
-            self.question_notebook.add(question_frame, text=f"{question_id}")
+            self.question_notebook.add(question_frame, text=f"{question_counter}")
             self.options_vars[question_id] = current_question_vars
+            question_counter += 1
+
 
     def __submit_all_user_answers(self):
         user_answers: Dict[int, List[str]] = dict()
@@ -104,6 +108,7 @@ class QuizApplication:
         mistakes_window_notebook.pack(expand=True, fill='both')
 
         qdb = self.test_runner.current_session_question_database
+        question_counter = 1
         for question_id in self.test_runner.current_session_question_database.keys():
             if not self.test_runner.validate_answer(question_id):
                 question_frame = tk.Frame()
@@ -125,7 +130,8 @@ class QuizApplication:
                         font=self.font,
                         fg=highlight)
                     label.pack(pady=5, padx=5)
-                mistakes_window_notebook.add(question_frame, text=f"{question_id}")
+                mistakes_window_notebook.add(question_frame, text=f"{question_counter}")
+                question_counter += 1
 
 
 
