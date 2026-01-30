@@ -1,4 +1,5 @@
 import tkinter as tk
+from math import floor
 from tkinter import messagebox
 from tkinter.font import Font
 from tkinter import ttk
@@ -70,14 +71,19 @@ class QuizApplication:
         for key in self.options_vars.keys():
             user_answers[key] = list(var.get() for var in self.options_vars[key] if var.get() != "not_selected")
         self.test_runner.submit_all(user_answers)
+
+    def __check_if_passed(self, number_of_correct_answers: int, total_number_of_questions: int) -> bool:
+        allowed_mistakes_percent = 0.15
+        number_of_allowed_mistakes = floor(len(self.test_runner.current_session_question_database) * allowed_mistakes_percent)
+        return total_number_of_questions - number_of_correct_answers <= number_of_allowed_mistakes
     def __show_score(self) -> None:
-        score = self.test_runner.count_score()
+        user_score = self.test_runner.count_score()
         number_of_questions = len(self.test_runner.current_session_question_database)
         tk.messagebox.showinfo(
             title="Результат",
-            message=f"Результат: {score}/{number_of_questions}\n"
+            message=f"Результат: {user_score}/{number_of_questions}\n"
         )
-        if score == number_of_questions:
+        if self.__check_if_passed(user_score, number_of_questions):
             tk.messagebox.showinfo(
                 title="Успех",
                 message="Тест сдан"
@@ -132,6 +138,8 @@ class QuizApplication:
                     label.pack(pady=5, padx=5)
                 mistakes_window_notebook.add(question_frame, text=f"{question_counter}")
                 question_counter += 1
+
+
 
 
 
