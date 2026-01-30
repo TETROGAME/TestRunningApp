@@ -1,5 +1,5 @@
 import tkinter as tk
-from math import floor
+from math import ceil
 from tkinter import messagebox
 from tkinter.font import Font
 from tkinter import ttk
@@ -74,8 +74,9 @@ class QuizApplication:
 
     def __check_if_passed(self, number_of_correct_answers: int, total_number_of_questions: int) -> bool:
         allowed_mistakes_percent = 0.15
-        number_of_allowed_mistakes = floor(len(self.test_runner.current_session_question_database) * allowed_mistakes_percent)
+        number_of_allowed_mistakes = ceil(len(self.test_runner.current_session_question_database) * allowed_mistakes_percent)
         return total_number_of_questions - number_of_correct_answers <= number_of_allowed_mistakes
+
     def __show_score(self) -> None:
         user_score = self.test_runner.count_score()
         number_of_questions = len(self.test_runner.current_session_question_database)
