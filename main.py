@@ -7,7 +7,7 @@ def get_resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 def main():
-    relative_file_path = "example_questions_ru.json"
+    relative_file_path = "source_files/csv/example_questions_ru.csv"
     resource_path = str(get_resource_path(relative_file_path))
     runner = TestRunner.TestRunner(resource_path, 5)
     root = tk.Tk()

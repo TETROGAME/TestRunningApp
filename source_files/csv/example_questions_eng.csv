@@ -1,0 +1,11 @@
+id,title,options,correct_option_ids
+1,What is the main difference between a list and a tuple in Python?,"a:Lists are mutable|b:Tuples are mutable|c:Lists are immutable|d:Tuples cannot store mixed data types",a
+2,What does the 'is' operator compare?,"a:Value equality|b:Object identity|c:Type equality|d:Memory size",b
+3,Which keyword is used to create a generator in Python?,"a:return|b:yield|c:generate|d:async",b
+4,What is the purpose of Python's GIL (Global Interpreter Lock)?,"a:To speed up multiprocessing|b:To allow multiple threads to run simultaneously|c:To ensure only one thread executes Python bytecode at a time|d:To manage memory allocation",c
+5,Which method is called when an object is created?,"a:__new__|b:__init__|c:__create__|d:__start__",b
+6,What does the 'with' statement use internally?,"a:__enter__ and __exit__|b:__open__ and __close__|c:__start__ and __end__|d:__begin__ and __finish__",a
+7,Which of the following is NOT a mutable type?,"a:List|b:Dictionary|c:Set|d:Tuple",d
+8,What does the 'async' keyword define?,"a:A coroutine|b:A thread|c:A generator|d:A context manager",a
+9,Which function is used to iterate over an iterable with an index?,"a:range()|b:enumerate()|c:zip()|d:iter()",b
+10,What is a shallow copy?,"a:A full recursive copy|b:A reference to the original object|c:A copy where nested objects are shared|d:A copy stored in temporary memory",c

@@ -1,13 +1,14 @@
 import os
 from typing import Dict
 from TestRunner.Question import Question
-from TestRunner.QuestionReader import JsonQuestionReader
+from TestRunner.QuestionReader import JSONQuestionReader, CVSQuestionReader
 
 
 class QuestionLoader:
     def __init__(self) -> None:
         self.file_readers = {
-            ".json": JsonQuestionReader()
+            ".json": JSONQuestionReader(),
+            ".csv": CVSQuestionReader()
         }
 
     def load(self, file_path: str) -> Dict[int, Question]:
