@@ -1,10 +1,15 @@
+import os
+import sys
 import tkinter as tk
-from TestRunner import TestRunner
+
 from QuizApplication import QuizApplication as QApp
-import os, sys
+from TestRunner import TestRunner
+
+
 def get_resource_path(relative_path):
-    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
+
 
 def main():
     relative_file_path = "source_files/csv/example_questions_ru.csv"
@@ -14,5 +19,6 @@ def main():
     app = QApp.QuizApplication(root, runner)
     root.mainloop()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
