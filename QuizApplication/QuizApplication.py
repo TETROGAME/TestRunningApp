@@ -27,6 +27,8 @@ class QuizApplication:
 
         self.__load_question_tabs()
 
+        self.__add_nav_buttons(self.root, self.question_notebook)
+
         self.submit_answers_button = tk.Button(
             self.root,
             text="Завершить тест",
@@ -34,6 +36,51 @@ class QuizApplication:
             command=self.__proceed_after_questions,
         )
         self.submit_answers_button.pack(fill="both", pady=5, padx=5)
+
+    def __prev_question(self, notebook, prev_btn, next_btn):
+        current = notebook.index("current")
+        if current > 0:
+            notebook.select(current - 1)
+            self.__update_nav_buttons_state(notebook, prev_btn, next_btn)
+
+    def __next_question(self, notebook, prev_btn, next_btn):
+        current = notebook.index("current")
+        last = notebook.index("end") - 1
+        if current < last:
+            notebook.select(current + 1)
+            self.__update_nav_buttons_state(notebook, prev_btn, next_btn)
+
+    def __update_nav_buttons_state(self, notebook, prev_btn, next_btn):
+        current = notebook.index("current")
+        last = notebook.index("end") - 1
+        prev_btn.config(state="normal" if current > 0 else "disabled")
+        next_btn.config(state="normal" if current < last else "disabled")
+
+    def __add_nav_buttons(self, parent, notebook):
+        nav_frame = tk.Frame(parent)
+        nav_frame.pack(fill="x", padx=5, pady=2)
+
+        prev_button = tk.Button(
+            nav_frame,
+            text="Предыдущий вопрос",
+            font=self.font,
+            command=lambda: self.__prev_question(notebook, prev_button, next_button),
+        )
+        prev_button.pack(side="left", expand=True, fill="x", padx=(0, 2))
+
+        next_button = tk.Button(
+            nav_frame,
+            text="Следующий вопрос",
+            font=self.font,
+            command=lambda: self.__next_question(notebook, prev_button, next_button),
+        )
+        next_button.pack(side="right", expand=True, fill="x", padx=(2, 0))
+
+        self.__update_nav_buttons_state(notebook, prev_button, next_button)
+        notebook.bind(
+            "<<NotebookTabChanged>>",
+            lambda e: self.__update_nav_buttons_state(notebook, prev_button, next_button),
+        )
 
     def __load_question_tabs(self):
         self.options_vars: Dict[int, List[tk.StringVar]] = dict()
@@ -158,3 +205,5 @@ class QuizApplication:
                     label.pack(pady=5, padx=5)
                 mistakes_window_notebook.add(question_frame, text=f"{question_counter}")
                 question_counter += 1
+
+        self.__add_nav_buttons(self.root, mistakes_window_notebook)
