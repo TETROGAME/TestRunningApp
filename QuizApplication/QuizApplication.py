@@ -1,8 +1,7 @@
 import tkinter as tk
 from math import ceil
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 from tkinter.font import Font
-from tkinter import ttk
 from typing import Dict, List
 
 from TestRunner.Question import Option
@@ -11,38 +10,45 @@ from TestRunner.TestRunner import TestRunner
 
 class QuizApplication:
     test_runner: TestRunner
+
     def __init__(self, root: tk.Tk, test_runner: TestRunner) -> None:
 
         self.test_runner = test_runner
 
         self.root = root
-        root.title('Программа тестирования')
+        root.title("Программа тестирования")
 
-        self.font = Font(
-            family='Arial',
-            size=25
-        )
+        self.font = Font(family="Arial", size=25)
         self.__build_ui()
 
     def __build_ui(self) -> None:
         self.question_notebook = ttk.Notebook(self.root)
-        self.question_notebook.pack(expand=True, fill='both')
+        self.question_notebook.pack(expand=True, fill="both")
 
         self.__load_question_tabs()
 
-        self.submit_answers_button = tk.Button(self.root, text="Завершить тест", font=self.font, command=self.__proceed_after_questions)
+        self.submit_answers_button = tk.Button(
+            self.root,
+            text="Завершить тест",
+            font=self.font,
+            command=self.__proceed_after_questions,
+        )
         self.submit_answers_button.pack(fill="both", pady=5, padx=5)
 
     def __load_question_tabs(self):
         self.options_vars: Dict[int, List[tk.StringVar]] = dict()
         question_counter = 1
         for question_id in self.test_runner.current_session_question_database.keys():
-            current_question = self.test_runner.current_session_question_database[question_id]
+            current_question = self.test_runner.current_session_question_database[
+                question_id
+            ]
 
             question_frame = tk.Frame()
             question_frame.pack()
 
-            question_title = tk.Label(question_frame, text=current_question.title, font=self.font)
+            question_title = tk.Label(
+                question_frame, text=current_question.title, font=self.font
+            )
             question_title.pack()
 
             options_frame = tk.Frame(question_frame)
@@ -58,42 +64,50 @@ class QuizApplication:
                     onvalue=option.id,
                     offvalue="not_selected",
                     text=option.text,
-                    font=self.font)
+                    font=self.font,
+                )
                 option_checkbox.pack()
                 current_question_vars.append(var)
             self.question_notebook.add(question_frame, text=f"{question_counter}")
             self.options_vars[question_id] = current_question_vars
             question_counter += 1
 
-
     def __submit_all_user_answers(self):
         user_answers: Dict[int, List[str]] = dict()
         for key in self.options_vars.keys():
-            user_answers[key] = list(var.get() for var in self.options_vars[key] if var.get() != "not_selected")
+            user_answers[key] = list(
+                var.get()
+                for var in self.options_vars[key]
+                if var.get() != "not_selected"
+            )
         self.test_runner.submit_all(user_answers)
 
-    def __check_if_passed(self, number_of_correct_answers: int, total_number_of_questions: int) -> bool:
+    def __check_if_passed(
+        self, number_of_correct_answers: int, total_number_of_questions: int
+    ) -> bool:
         allowed_mistakes_percent = 0.15
-        number_of_allowed_mistakes = ceil(len(self.test_runner.current_session_question_database) * allowed_mistakes_percent)
-        return total_number_of_questions - number_of_correct_answers <= number_of_allowed_mistakes
+        number_of_allowed_mistakes = ceil(
+            len(self.test_runner.current_session_question_database)
+            * allowed_mistakes_percent
+        )
+        return (
+            total_number_of_questions - number_of_correct_answers
+            <= number_of_allowed_mistakes
+        )
 
     def __show_score(self) -> None:
         user_score = self.test_runner.count_score()
         number_of_questions = len(self.test_runner.current_session_question_database)
-        tk.messagebox.showinfo(
+        messagebox.showinfo(
             title="Результат",
-            message=f"Результат: {user_score}/{number_of_questions}\n"
+            message=f"Результат: {user_score}/{number_of_questions}\n",
         )
         if self.__check_if_passed(user_score, number_of_questions):
-            tk.messagebox.showinfo(
-                title="Успех",
-                message="Тест сдан"
-            )
+            messagebox.showinfo(title="Успех", message="Тест сдан")
             self.root.destroy()
             return
-        option = tk.messagebox.askyesno(
-            title="Просмотр результатов",
-            message="Посмотреть ошибки?"
+        option = messagebox.askyesno(
+            title="Просмотр результатов", message="Посмотреть ошибки?"
         )
         if option:
             self.__show_mistakes()
@@ -101,8 +115,6 @@ class QuizApplication:
     def __proceed_after_questions(self):
         self.__submit_all_user_answers()
         self.__show_score()
-
-
 
     def __is_checked(self, question_id: int, option: Option) -> bool:
         return option.id in self.test_runner.user_answers[question_id]
@@ -112,7 +124,7 @@ class QuizApplication:
             widget.destroy()
 
         mistakes_window_notebook = ttk.Notebook(self.root)
-        mistakes_window_notebook.pack(expand=True, fill='both')
+        mistakes_window_notebook.pack(expand=True, fill="both")
 
         qdb = self.test_runner.current_session_question_database
         question_counter = 1
@@ -121,7 +133,9 @@ class QuizApplication:
                 question_frame = tk.Frame()
                 question_frame.pack()
 
-                label = tk.Label(question_frame, text=qdb[question_id].title, font=self.font)
+                label = tk.Label(
+                    question_frame, text=qdb[question_id].title, font=self.font
+                )
                 label.pack(pady=5, padx=5)
 
                 options_frame = tk.Frame(question_frame)
@@ -130,17 +144,17 @@ class QuizApplication:
                 for option in qdb[question_id].options:
                     highlight = "black"
                     if self.__is_checked(question_id, option):
-                        highlight = "green" if option.id in self.test_runner.current_session_question_database[question_id].correct_option_ids else "red"
+                        highlight = (
+                            "green"
+                            if option.id
+                            in self.test_runner.current_session_question_database[
+                                question_id
+                            ].correct_option_ids
+                            else "red"
+                        )
                     label = tk.Label(
-                        options_frame,
-                        text=option.text,
-                        font=self.font,
-                        fg=highlight)
+                        options_frame, text=option.text, font=self.font, fg=highlight
+                    )
                     label.pack(pady=5, padx=5)
                 mistakes_window_notebook.add(question_frame, text=f"{question_counter}")
                 question_counter += 1
-
-
-
-
-
